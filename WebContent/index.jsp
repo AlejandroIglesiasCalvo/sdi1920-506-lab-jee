@@ -15,6 +15,26 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<%
+Integer contador =(Integer) application.getAttribute("contador");
+if(contador==null){
+	contador=new Integer(0);
+}
+application.setAttribute("contador", contador.intValue()+1);
+%>
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li><a href="incluirEnCarrito">Carrito</a></li>
+			<li><a href="login.jsp">Login</a></li>
+			<li><a href=admin.jsp>Administrar productos</a></li>
+		</ul>
+		<div class="nav navbar-rigth">
+			<%=contador%>
+			Visitas
+		</div>
+	</div>
+	</nav>
 	<!-- Contenido -->
 	<div class="container" id="contenedor-principal">
 		<h2>Productos</h2>
