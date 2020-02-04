@@ -1,6 +1,7 @@
 package com.uniovi.sdi;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
 import java.util.List;
 
@@ -71,6 +72,8 @@ public class ServletCarrito extends HttpServlet {
 			carrito.put(claveProducto, new Integer(numeroArticulos + 1));
 		}
 	}
+	
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

@@ -48,7 +48,7 @@
 					items="${productosService.productos}">
 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 						<div>
-							<img src="<c:out value="${producto.imagen}"/>" />
+							<img src ="${producto.imagen}"/>
 							<div>
 								<c:out value="${producto.nombre}" />
 							</div>

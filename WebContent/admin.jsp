@@ -45,7 +45,7 @@
 					imagen:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="imagen"
-						required="true" />
+						required="true" value= "http://localhost:8080/sdi1920-506-lab-jee/img/" />
 				</div>
 			</div>
 			<div class="form-group">
