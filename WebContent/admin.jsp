@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page language="java" import="com.uniovi.sdi.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -15,17 +17,51 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<%
-		String usuario = (String) request.getSession().getAttribute("usuario");
-		System.out.println("Usuario en sesión: " + usuario);
-		if (usuario == null || usuario.equals("admin") == false) {
-			// No hay usuario o no es admin
-			response.sendRedirect("login.jsp");
-		}
-	%>
+	<c:if test="${sessionScope.usuario != 'admin'}">
+		<c:redirect url="/login.jsp" />
+	</c:if>
+	<jsp:useBean id="producto" class="com.uniovi.sdi.Producto" />
+	<jsp:setProperty name="producto" property="*" />
+	<c:if test="${producto.nombre != null}">
+		<jsp:useBean id="productosService"
+			class="com.uniovi.sdi.ProductosService" />
+		<jsp:setProperty name="productosService" property="nuevoProducto"
+			value="${producto}" />
+		<c:redirect url="/index.jsp" />
+	</c:if>
 	<!-- Contenido -->
 	<div class="container" id="contenedor-principal">
-		<h2>Administrar</h2>
+		<h2>Agregar producto a la tienda</h2>
+		<form class="form-horizontal" method="post" action="admin.jsp">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="nombre"
+						required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="imagen">URL
+					imagen:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="imagen"
+						required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="precio">Precio
+					(€):</label>
+				<div class="col-sm-10">
+					<input type="number" step="0.01" class="form-control" name="precio"
+						required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Agregar</button>
+				</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

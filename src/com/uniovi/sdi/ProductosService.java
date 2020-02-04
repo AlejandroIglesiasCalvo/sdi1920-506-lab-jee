@@ -4,7 +4,10 @@ import java.util.List;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 public class ProductosService {
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/UO247346/sdi1920-506-lab-jee.git
 	public List<Producto> getProductos(){
 		List<Producto> productos = new LinkedList<Producto>();
 		ObjectContainer db = null;
