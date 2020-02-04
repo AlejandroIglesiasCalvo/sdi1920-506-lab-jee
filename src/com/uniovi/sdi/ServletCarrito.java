@@ -24,7 +24,7 @@ public class ServletCarrito extends HttpServlet {
 	 */
 	public ServletCarrito() {
 		super();
-		ps= new ProductosService();
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -32,22 +32,7 @@ public class ServletCarrito extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-<<<<<<< HEAD
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// LLenamos la lista
-		HttpSession session=request.getSession();
-		HashMap<String,Integer> productosTienda = llenarCarrito(ps.getProductos());
-				
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<HTML>");
-		out.println("<HEAD><TITLE>Tienda SDI: Todos los productos</TITLE></HEAD>");
-		out.println("<BODY>");
-		out.println(carritoEnHTML(productosTienda)+"<br>");
-		//out.println("<a href=\"tienda.html\">Volver</a></BODY></HTML>");
-		out.println("<a href=\"index.jsp\">Volver</a></BODY></HTML>");
-=======
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -65,7 +50,7 @@ public class ServletCarrito extends HttpServlet {
 		request.setAttribute("paresCarrito", carrito);
 		getServletContext().getRequestDispatcher("/vista-carrito.jsp").forward(request, response);
 
->>>>>>> branch 'master' of https://github.com/UO247346/sdi1920-506-lab-jee.git
+
 	}
 
 	private String carritoEnHTML(HashMap<String, Integer> carrito) {
@@ -96,15 +81,6 @@ public class ServletCarrito extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	private HashMap<String,Integer> llenarCarrito(List<Producto>p){
-		HashMap<String, Integer> lista = new HashMap<String, Integer>();
-		int n=0;
-		for(Producto x :p) {
-			lista.put(x.getNombre(), n);
-			n++;
-		}
-		return lista;
-		
-	}
+	
 
 }
